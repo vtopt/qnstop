@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="description" content="QNSTOP" />
+<meta name="keywords" content="QNSTOP, global optimization, stochastic optimization, derivative-free, response surface, quasi-Newton" />
+<link rel="stylesheet" type="text/css" href="body.css" title="QNSTOP" media="screen,projection" />
+<title>QNSTOP</title>
+</head>
+
+<body>
+<div id="wrap">
+
+<div id="header">
+<p id="toplinks"></p>
+<h1>QNSTOP</h1>
+<p id="slogan">Quasi-Newton Algorithm for Stochastic Optimization</p>
+</div>
+
+<div id="content">
+<h2>User Guide</h2>
+<p>
+The package
+<strong><a href="index.html"><span class="green">QNSTOP</span></a></strong>
+is a suite of serial and parallel Fortran 95/2003 codes
+for deterministic global optimization and stochastic optimization, with
+the serial driver subroutine  <code>QNSTOPS</code>
+and the parallel driver subroutine <code>QNSTOPP</code>
+Due to the limitations of <code>OpenMP</code> threads, the logic in the parallel
+code  <code>QNSTOPP</code>  is rather different from that
+in the serial code  <code>QNSTOPS</code>
+without any <code>OpenMP</code> directives.
+The subroutines  <code>QNSTOP{S|P}</code>  are
+Fortran 95/2003 implementations of the bound constrained
+quasi-Newton stochastic optimization algorithm QNSTOP
+from Indiana University.
+The subroutines <code>QNSTOP{S|P}</code>  use the module
+<code>REAL_PRECISION</code>  from <code>HOMPACK90</code>
+(ACM TOMS Algorithm 777) for specifying the real data type,
+and the module  <code>ZIGARRAY</code> to provide normally
+distributed random numbers using the ziggurat algorithm.
+The modules <code>QNSTOP{S|P}</code>_MOD</code> (files
+<code>qnstop{s|p}.f95</code>) contain the driver
+subroutines <code>QNSTOP{S|P}</code>, data type declarations, and
+auxiliary subroutines and functions.
+Comments at the beginning of the driver subroutines
+<code>QNSTOP{S|P}</code>  document the arguments and usage.
+</p>
+
+<p>
+The physical organization into files is as follows.
+
+<ul>
+ <li> The file <code>qnstops.f95</code> contains the module
+   <code>QNSTOPS_MOD</code>, which includes the serial driver
+   subroutine <code>QNSTOPS</code> and auxiliary procedures.</li>
+ <li> The file <code>qnstopp.f95</code> contains the module
+   <code>QNSTOPP_MOD</code>, which includes the parallel driver
+   subroutine <code>QNSTOPP</code> and auxiliary procedures.</li>
+ <li> The file <code>real_precision.f95</code> contains the module
+ <code>REAL_PRECISION</code>.</li>
+ <li> The file <code>zigarray.f95</code> contains the module
+     <code>ZIGARRAY</code>.</li>
+ <li> The file <code>sample_main_s.f95</code> contains a sample main
+ program illustrating the usage of <code>QNSTOPS</code>, and also verifies the
+ installation by calling <code>QNSTOPS</code> to minimize the Griewank function,
+ defined within this file.</li>
+ <li> The file <code>sample_main_p.f95</code> contains a sample main
+   program illustrating the usage of <code>QNSTOPP</code>, and also verifies the
+   installation by calling <code>QNSTOPP</code> to minimize the Griewank function,
+   defined within this file.</li>
+ <li> The files <code>blas.f</code> and <code>lapack.f</code> contain
+   just the necessary <code>BLAS</code> and <code>LAPACK</code>
+   routines, in case the complete <code>BLAS</code> and
+   <code>LAPACK</code> libraries are not available.</li>
+</ul>
+</p>
+
+<p>
+    The modules  <code>REAL_PRECISION</code>  and  <code>ZIGARRAY</code>  are
+    in separate files because they may be of interest independent of
+    <code>QNSTOP</code>.
+</p>
+
+<p>
+    To compile and link, use the command (where <code>{s|p}</code> means either
+    <code>s</code> (serial) or <code>p</code> (parallel))
+</p>
+
+<pre>
+$f95 $OPTS real_precision.f95 zigarray.f95 qnstop{s|p}.f95 sample_main_{s|p}.f95 -o sample_main_{s|p} $LIB
+</pre>
+
+<p>
+where <code>$f95</code> is the name of the Fortran 95/2003 compiler,
+<code>$OPTS</code> are compiler options, and <code>$LIB</code> are
+flags to link <code>LAPACK</code> and <code>BLAS</code>.  If the
+<code>LAPACK</code> and <code>BLAS</code> libraries are not available
+on your system, then replace <code>$LIB</code> with the filenames
+<code>blas.f lapack.f</code>; these provided files contain just the
+necessary routines from the <code>BLAS</code> and <code>LAPACK</code>
+libraries.  Then execute
+</p>
+
+<pre>
+./sample_main_{s|p}
+</pre>
+
+<p>
+to test the installation.
+</p>
+
+<p>
+To call <code>QNSTOP{S|P}</code> from your program, include the
+Fortran statement USE <code>QNSTOP{S|P}_MOD</code> and provide an
+interface block to your objective function similar to that for the
+Griewank function in <code>sample_main_s.f95</code>.
+</p>
+
+<hr>
+
+<p>
+Notes: the file <code>duni_omp.f95</code>, unrelated to
+<code>QNSTOP{S|P}</code>, contains a parallel <code>OpenMP</code>
+version of a high quality random number generator <cdoe>DUNI()</code>
+due to Kahaner and Marsaglia, which may be of value when the
+<code>QNSTOPP</code> argument <code>OMP > 0</code> and the objective
+function evaluation involves a stochastic simulation.
+</p>
+</div>
+
+<div id="sidebar">
+<h2>Navigate</h2>
+<ul>
+<li><a href="index.html">Home</a>
+<li><a href="usergd.html">User Guide</a></li>
+<li><a href="QNSTOP.zip">Download</a>
+</ul>
+<h2>Inqueries</h2>
+<p>
+Layne Watson<br>
+VPI & SU, Blacksburg, VA 24061<br>
+<code>ltw at cs dot vt dot edu</code><br>
+<code>ltw at ieee dot org</code>
+</p>
+</div>
+
+<div id="footer">
+    <p> <b>Last Modified:</b> 04/26/2020 </p>
+    <p>&copy; 2020 <a href="#">QNSTOP</a></p>
+</div>
+
+</div>
+</body>
+</html>
