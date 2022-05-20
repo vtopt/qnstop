@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="description" content="QNSTOP" />
+<meta name="keywords" content="QNSTOP, global optimization, stochastic optimization, derivative-free, response surface, quasi-Newton" />
+<link rel="stylesheet" type="text/css" href="body.css" title="QNSTOP" media="screen,projection" />
+<title>QNSTOP</title>
+</head>
+
+<body>
+<div id="wrap">
+
+<div id="header">
+<p id="toplinks"></p>
+<h1>QNSTOP</h1>
+<p id="slogan">Quasi-Newton Algorithm for Stochastic Optimization</p>
+</div>
+
+<div id="content">
+<h2>About the Software</h2>
+<p>
+    <strong><span class="green">QNSTOP</span></strong> [1] is a
+    serial and parallel (OpenMP) Fortran 2003 implementation
+    of the quasi-Newton stochastic optimization method of
+    Castle and Trosset [3] for stochastic search problems.
+    Among other applications [7], QNSTOP is effective at
+    global parameter estimation in biology [2,4,5,6].
+    The package includes both local search with stochastic objective
+    and global search with "noisy" deterministic objective.
+    The parallel driver subroutine offers several parallel decomposition
+    strategies, and the serial driver subroutine can be used for local
+    stochastic search or global deterministic search.
+</p>
+<p class="readmore">
+    <a href="usergd.html">Read the User Guide</a> &raquo;
+</p>
+
+<h2>Publications</h2>
+<a href="http://dx.doi.org/10.1145/3374219" id="r1"><p>
+[1] B. D. Amos, D. R. Easterling, L. T. Watson, W. I. Thacker, B. S. Castle,
+and M. W. Trosset, "Algorithm 1007: QNSTOP&mdash;quasi-Newton algorithm for
+stochastic optimization", <i>ACM Trans. Math. Software</i>,
+46, Article 17 (2020), 1-20.
+</p></a>
+
+<a href="http://dl.acm.org/citation.cfm?id=2685662" id="r2"><p>
+[2] T. M. Andrew, B. D. Amos, D. R. Easterling, C. Oguz, W. T. Baumann, J. J.
+Tyson, and L. T. Watson, "Global parameter estimation for a eukaryotic
+cell cycle model in systems biology", in <i>Proc. 2014 Summer Simulation
+Multiconference, Summer Computer Simulation Conf.</i>, Soc. for Modelling
+and Simulation Internat., Vista, CA, 2014, 324-331.
+</p></a>
+
+<a href="https://mtrosset.pages.iu.edu/Students/Brent/brent-dissertation.pdf" id="r3"><p>
+[3] B. S. Castle, "Quasi-Newton methods for stochastic optimization
+and proximity-based methods for disparate information fusion".
+<i>Ph.D. thesis, Indiana University, Bloomington, IN</i>, 2012.
+</p></a>
+
+<a href="http://dx.doi.org/10.1109/TCBB.2017.2773083" id="r4"><p>
+[4] M. Chen, B. D. Amos, L. T. Watson, J. J. Tyson, Y. Cao, C. A. Shaffer,
+M. W. Trosset, C. Oguz, and G. Kakoti, "Quasi-Newton stochastic optimization
+algorithm for parameter estimation of a stochastic model of the budding
+yeast cell cycle", <i>IEEE/ACM Trans. Comput. Biol. Bioinformatics</i>,
+16 (2019) 301-311.
+</p></a>
+
+<a href="https://doi.org/10.1063/1.5143004" id="r5"><p>
+[5] M. Chen, M. Ahmadian, L. Watson, and Y. Cao,
+"Finding acceptable parameter regions of stochastic Hill functions
+for multisite phosphorylation mechanism", <i>J. Chem. Phys.</i>,
+152, Article 124108 (2020) 1-13.
+</p></a>
+
+<div id="r6"><p>
+[6] M. Chen, Y. Cao, and L. T. Watson, "Parameter estimation of stochastic
+models based on limited data", in <i>ACM SIGBioinformatics Record</i>,
+Vol.~7, No.~3, 2017, Article 3, 3 pages.
+</p></div>
+
+<a href="http://dx.doi.org/10.1007/s10589-013-9592-1" id="r7"><p>
+[7] D. R. Easterling, L. T. Watson, M. L. Madigan, B. S. Castle, and M. W.
+Trosset, "Parallel deterministic and stochastic global minimization of
+functions with very many minima", <i>Comput. Optim. Appl.</i>, 57 (2014)
+469-492.
+</p></a>
+</div>
+
+<div id="sidebar">
+<h2>Navigate</h2>
+<ul>
+<li><a href="index.html">Home</a>
+<li><a href="usergd.html">User Guide</a></li>
+<li><a href="QNSTOP.zip">Download</a>
+</ul>
+<h2>Inqueries</h2>
+<p>
+Layne Watson<br>
+VPI & SU<br>
+Blacksburg, VA 24061<br>
+<code>ltw at cs dot vt dot edu</code><br>
+<code>ltw at ieee dot org</code>
+</p>
+</div>
+
+<div id="footer">
+    <p> <b>Last Modified:</b> 04/26/2020 </p>
+    <p>&copy; 2020 <a href="#">QNSTOP</a></p>
+</div>
+
+</div>
+</body>
+</html>
